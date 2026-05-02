@@ -1,21 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search</title>
+    <title>Search Programs</title>
+    <style>
+        form {
+            margin-top: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .form-row label {
+            width: 180px;
+            font-weight: bold;
+        }
+
+        .form-row select {
+            width: 200px;
+            padding: 5px;
+        }
+
+        button {
+            margin-left: 180px;
+            padding: 6px 12px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Search</h1>
 
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/search">Search Programs</a> |
-        <a href="/programs">View Programs</a> |
-        <a href="/add-user">Add User</a> |
-        <a href="/add-application">Add Application</a> |
-        <a href="/reports">Reports</a> |
-        <a href="/about">About</a>
-    </nav>
+<h1>Search Healthcare Assistance Programs</h1>
 
-    <p>Content goes here</p>
+<nav>
+    <a href="/">Home</a> |
+    <a href="/search">Search Programs</a> |
+    <a href="/programs">View Programs</a> |
+    <a href="/add-user">Add User</a> |
+    <a href="/add-application">Add Application</a> |
+    <a href="/reports">Reports</a> |
+    <a href="/about">About</a>
+</nav>
+
+<hr>
+
+<form action="/results" method="GET">
+
+    <div class="form-row">
+        <label>State:</label>
+        <select name="state">
+            <option value="">-- Select State --</option>
+            <option value="MD">Maryland</option>
+            <option value="VA">Virginia</option>
+            <option value="DC">Washington DC</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label>Program Type:</label>
+        <select name="type">
+            <option value="">-- Select Type --</option>
+            <option value="Medicaid">Medicaid</option>
+			<option value="Medicare">Medicare</option>
+            <option value="Subsidy">Subsidy</option>
+            <option value="Grant">Grant</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label>Eligibility Category:</label>
+        <select name="eligibility">
+            <option value="">-- Select Category --</option>
+            <option value="Low Income">Low Income</option>
+            <option value="Senior (65+)">Senior (65+)</option>
+            <option value="Disabled">Disabled</option>
+        </select>
+    </div>
+
+    <button type="submit">Search</button>
+
+</form>
+
 </body>
 </html>
