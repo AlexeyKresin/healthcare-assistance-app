@@ -4,18 +4,50 @@
     <title>Reports</title>
 </head>
 <body>
-    <h1>Reports</h1>
 
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/search">Search Programs</a> |
-        <a href="/programs">View Programs</a> |
-        <a href="/add-user">Add User</a> |
-        <a href="/add-application">Add Application</a> |
-        <a href="/reports">Reports</a> |
-        <a href="/about">About</a>
-    </nav>
+<h1>Reports</h1>
 
-    <p>Content goes here</p>
+<nav>
+    <a href="/">Home</a> |
+    <a href="/search">Search Programs</a> |
+    <a href="/programs">View Programs</a> |
+    <a href="/add-user">Add User</a> |
+    <a href="/add-application">Add Application</a> |
+    <a href="/reports">Reports</a> |
+    <a href="/about">About</a>
+</nav>
+
+<hr>
+
+<h2>Programs by Provider</h2>
+<table border="1">
+    <tr>
+        <th>Organization</th>
+        <th>Total Programs</th>
+    </tr>
+    {% for row in programs_by_provider %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br><br>
+
+<h2>Applications by User</h2>
+<table border="1">
+    <tr>
+        <th>User</th>
+        <th>Total Applications</th>
+    </tr>
+    {% for row in applications_by_user %}
+    <tr>
+        <td>{{ row[0] }} {{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 </body>
 </html>

@@ -117,7 +117,33 @@ def add_application():
 
 @app.route("/reports")
 def reports():
-    return render_template("reports.html")
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT o.organization_name, COUNT(p.program_id) AS total_programs
+        FROM Organization o
+        JOIN Program p ON o.organization_id = p.organization_id
+        GROUP BY o.organization_name
+    """)
+    programs_by_provider = cursor.fetchall()
+
+    cursor.execute("""
+        SELECT u.first_name, u.last_name, COUNT(a.application_id) AS total_applications
+        FROM ApplicantUser u
+        LEFT JOIN Application a ON u.user_id = a.user_id
+        GROUP BY u.user_id, u.first_name, u.last_name
+    """)
+    applications_by_user = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template(
+        "reports.html",
+        programs_by_provider=programs_by_provider,
+        applications_by_user=applications_by_user
+    )
 
 @app.route("/about")
 def about():
