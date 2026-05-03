@@ -1,6 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import mysql.connector
 
 app = Flask(__name__)
+
+
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="root123",
+        database="ak26db"
+    )
+
 
 @app.route("/")
 def home():
@@ -20,7 +31,22 @@ def program_details(id):
 
 @app.route("/programs")
 def programs():
-    return render_template("programs.html")
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    query = """
+        SELECT p.program_name, o.organization_name
+        FROM Program p
+        JOIN Organization o ON p.organization_id = o.organization_id
+    """
+
+    cursor.execute(query)
+    results = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template("programs.html", programs=results)
 
 @app.route("/add-user")
 def add_user():

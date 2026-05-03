@@ -2,20 +2,70 @@
 <html>
 <head>
     <title>Programs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 70%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
-    <h1>Programs</h1>
 
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/search">Search Programs</a> |
-        <a href="/programs">View Programs</a> |
-        <a href="/add-user">Add User</a> |
-        <a href="/add-application">Add Application</a> |
-        <a href="/reports">Reports</a> |
-        <a href="/about">About</a>
-    </nav>
+<h1>Healthcare Assistance Programs</h1>
 
-    <p>Content goes here</p>
+<nav>
+    <a href="/">Home</a> |
+    <a href="/search">Search Programs</a> |
+    <a href="/programs">View Programs</a> |
+    <a href="/add-user">Add User</a> |
+    <a href="/add-application">Add Application</a> |
+    <a href="/reports">Reports</a> |
+    <a href="/about">About</a>
+</nav>
+
+<hr>
+
+<h2>Available Programs</h2>
+
+<table>
+    <tr>
+        <th>Program Name</th>
+        <th>Organization</th>
+    </tr>
+
+    {% for program in programs %}
+    <tr>
+        <td>{{ program[0] }}</td>
+        <td>{{ program[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if programs|length == 0 %}
+<p>No programs found.</p>
+{% endif %}
+
 </body>
 </html>
