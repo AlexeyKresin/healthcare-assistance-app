@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Results</title>
+    <title>Search Results</title>
 </head>
 <body>
-    <h1>Results</h1>
 
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/search">Search Programs</a> |
-        <a href="/programs">View Programs</a> |
-        <a href="/add-user">Add User</a> |
-        <a href="/add-application">Add Application</a> |
-        <a href="/reports">Reports</a> |
-        <a href="/about">About</a>
-    </nav>
+<h1>Search Results</h1>
 
-    <p>Content goes here</p>
+<nav>
+    <a href="/">Home</a> |
+    <a href="/search">Search Programs</a> |
+    <a href="/programs">View Programs</a> |
+    <a href="/add-user">Add User</a> |
+    <a href="/add-application">Add Application</a> |
+    <a href="/reports">Reports</a> |
+    <a href="/about">About</a>
+</nav>
+
+<hr>
+
+{% if results %}
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Program Name</th>
+        <th>Organization</th>
+        <th>Benefit Type</th>
+        <th>Eligibility Criteria</th>
+        <th>Deadline</th>
+    </tr>
+
+    {% for row in results %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+        <td>{{ row[4] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No matching programs found.</p>
+{% endif %}
+
 </body>
 </html>

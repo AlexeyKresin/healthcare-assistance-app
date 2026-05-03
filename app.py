@@ -23,7 +23,41 @@ def search():
 
 @app.route("/results")
 def results():
-    return render_template("results.html")
+    benefit_type = request.args.get("type", "")
+    eligibility = request.args.get("eligibility", "")
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    query = """
+        SELECT 
+            p.program_name,
+            o.organization_name,
+            p.benefit_type,
+            p.eligibility_criteria,
+            p.application_deadline
+        FROM Program p
+        JOIN Organization o ON p.organization_id = o.organization_id
+        WHERE 1 = 1
+    """
+
+    params = []
+
+    if benefit_type:
+        query += " AND p.benefit_type = %s"
+        params.append(benefit_type)
+
+    if eligibility:
+        query += " AND p.eligibility_criteria LIKE %s"
+        params.append("%" + eligibility + "%")
+
+    cursor.execute(query, params)
+    results = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template("results.html", results=results)
 
 @app.route("/program/<int:id>")
 def program_details(id):

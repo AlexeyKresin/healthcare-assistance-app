@@ -3,14 +3,14 @@
 <head>
     <title>Search Programs</title>
     <style>
-        form {
-            margin-top: 20px;
+        body {
+            font-family: Arial, sans-serif;
         }
 
         .form-row {
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .form-row label {
@@ -19,13 +19,13 @@
         }
 
         .form-row select {
-            width: 200px;
-            padding: 5px;
+            width: 250px;
+            padding: 6px;
         }
 
         button {
             margin-left: 180px;
-            padding: 6px 12px;
+            padding: 8px 18px;
         }
     </style>
 </head>
@@ -48,33 +48,28 @@
 <form action="/results" method="GET">
 
     <div class="form-row">
-        <label>State:</label>
-        <select name="state">
-            <option value="">-- Select State --</option>
-            <option value="MD">Maryland</option>
-            <option value="VA">Virginia</option>
-            <option value="DC">Washington DC</option>
-        </select>
-    </div>
-
-    <div class="form-row">
         <label>Program Type:</label>
         <select name="type">
-            <option value="">-- Select Type --</option>
-            <option value="Medicaid">Medicaid</option>
-			<option value="Medicare">Medicare</option>
-            <option value="Subsidy">Subsidy</option>
-            <option value="Grant">Grant</option>
+            <option value="">-- Any Type --</option>
+            <option value="Medication Support">Medication Support</option>
+            <option value="Insurance Support">Insurance Support</option>
+            <option value="Financial Aid">Financial Aid</option>
+            <option value="Emergency Grant">Emergency Grant</option>
+            <option value="Care Support">Care Support</option>
+            <option value="Treatment Assistance">Treatment Assistance</option>
         </select>
     </div>
 
     <div class="form-row">
         <label>Eligibility Category:</label>
         <select name="eligibility">
-            <option value="">-- Select Category --</option>
-            <option value="Low Income">Low Income</option>
-            <option value="Senior (65+)">Senior (65+)</option>
-            <option value="Disabled">Disabled</option>
+            <option value="">-- Any Eligibility --</option>
+            <option value="Income">Income Based</option>
+            <option value="children">Children / Family</option>
+            <option value="65">Senior / Medicare Age</option>
+            <option value="emergency">Emergency Need</option>
+            <option value="Pregnant">Maternal Care</option>
+            <option value="chronic illness">Chronic Illness</option>
         </select>
     </div>
 
