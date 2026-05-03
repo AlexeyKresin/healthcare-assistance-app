@@ -4,18 +4,34 @@
     <title>Add User</title>
 </head>
 <body>
-    <h1>Add User</h1>
 
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/search">Search Programs</a> |
-        <a href="/programs">View Programs</a> |
-        <a href="/add-user">Add User</a> |
-        <a href="/add-application">Add Application</a> |
-        <a href="/reports">Reports</a> |
-        <a href="/about">About</a>
-    </nav>
+<h1>Add New Applicant</h1>
 
-    <p>Content goes here</p>
+<nav>
+    <a href="/">Home</a> |
+    <a href="/search">Search Programs</a> |
+    <a href="/programs">View Programs</a> |
+    <a href="/add-user">Add User</a> |
+    <a href="/add-application">Add Application</a> |
+    <a href="/reports">Reports</a> |
+    <a href="/about">About</a>
+</nav>
+
+<hr>
+
+<form method="POST">
+
+    First Name: <input type="text" name="first_name" required><br><br>
+    Last Name: <input type="text" name="last_name" required><br><br>
+    Date of Birth: <input type="date" name="dob"><br><br>
+    Email: <input type="email" name="email" required><br><br>
+    Phone: <input type="text" name="phone"><br><br>
+    City: <input type="text" name="city"><br><br>
+    State: <input type="text" name="state"><br><br>
+
+    <button type="submit">Add User</button>
+
+</form>
+
 </body>
 </html>

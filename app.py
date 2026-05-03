@@ -82,13 +82,38 @@ def programs():
 
     return render_template("programs.html", programs=results)
 
-@app.route("/add-user")
-def add_user():
-    return render_template("add_user.html")
 
-@app.route("/add-application")
+@app.route("/add-application", methods=["GET", "POST"])
 def add_application():
-    return render_template("add_application.html")
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    if request.method == "POST":
+        user_id = request.form["user_id"]
+        program_id = request.form["program_id"]
+        date = request.form["date"]
+
+        insert_query = """
+            INSERT INTO Application (user_id, program_id, application_date)
+            VALUES (%s, %s, %s)
+        """
+
+        cursor.execute(insert_query, (user_id, program_id, date))
+        conn.commit()
+
+        return render_template("add_application_confirmation.html")
+
+    # GET → load dropdown data
+    cursor.execute("SELECT user_id, first_name, last_name FROM ApplicantUser")
+    users = cursor.fetchall()
+
+    cursor.execute("SELECT program_id, program_name FROM Program")
+    programs = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template("add_application.html", users=users, programs=programs)
 
 @app.route("/reports")
 def reports():
@@ -97,6 +122,37 @@ def reports():
 @app.route("/about")
 def about():
     return render_template("about.html")
+      
+    
+@app.route("/add-user", methods=["GET", "POST"])
+def add_user():
+    if request.method == "POST":
+        first_name = request.form["first_name"]
+        last_name = request.form["last_name"]
+        dob = request.form["dob"]
+        email = request.form["email"]
+        phone = request.form["phone"]
+        city = request.form["city"]
+        state = request.form["state"]
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        query = """
+            INSERT INTO ApplicantUser
+            (first_name, last_name, date_of_birth, email, phone, city, state)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """
+
+        cursor.execute(query, (first_name, last_name, dob, email, phone, city, state))
+        conn.commit()
+
+        cursor.close()
+        conn.close()
+
+        return render_template("add_user_confirmation.html")
+
+    return render_template("add_user.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
