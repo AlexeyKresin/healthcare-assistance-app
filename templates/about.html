@@ -2,20 +2,50 @@
 <html>
 <head>
     <title>About</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
+<nav>
+    <a href="/">Home</a> |
+    <a href="/search">Search Programs</a> |
+    <a href="/programs">View Programs</a> |
+    <a href="/add-user">Add User</a> |
+    <a href="/add-application">Add Application</a> |
+    <a href="/reports">Reports</a> |
+    <a href="/about">About</a>
+</nav>
+
+<img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+<div class="container">
+
     <h1>About</h1>
 
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/search">Search Programs</a> |
-        <a href="/programs">View Programs</a> |
-        <a href="/add-user">Add User</a> |
-        <a href="/add-application">Add Application</a> |
-        <a href="/reports">Reports</a> |
-        <a href="/about">About</a>
-    </nav>
+    <p>
+    This web application is designed to help users find and apply for healthcare assistance programs.
+    It provides a centralized platform where individuals can explore available programs based on their needs,
+    such as financial aid, medical support, or eligibility criteria.
+    </p>
 
-    <p>Content goes here</p>
+    <p>
+    Users can search for programs using filters, view detailed program information, and submit applications
+    directly through the system. The application also allows administrators to manage users and track submitted
+    applications efficiently.
+    </p>
+
+    <p>
+    The system is built using Flask (Python) for the backend, MySQL for database management, and HTML/CSS for
+    the user interface. It demonstrates key database concepts such as relational schema design, data retrieval
+    using SQL joins, data insertion through web forms, and dynamic query-based search functionality.
+    </p>
+
+    <p>
+    This project was developed as part of a Database Management Systems course to showcase practical
+    implementation of database-driven web applications.
+    </p>
+
+</div>
+
 </body>
 </html>
