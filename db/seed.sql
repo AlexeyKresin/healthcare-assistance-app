@@ -1,4 +1,4 @@
-USE ak26db;
+-- USE ak26db;
 
 -- Optional (recommended during loading)
 SET FOREIGN_KEY_CHECKS = 0;
