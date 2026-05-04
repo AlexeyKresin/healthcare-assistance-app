@@ -2,24 +2,53 @@
 <html>
 <head>
     <title>Healthcare Assistance Finder</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<body>
+
+<nav>
+    <a href="/">Home</a> |
+    <a href="/search">Search Programs</a> |
+    <a href="/programs">View Programs</a> |
+    <a href="/add-user">Add User</a> |
+    <a href="/add-application">Add Application</a> |
+    <a href="/reports">Reports</a> |
+    <a href="/about">About</a>
+</nav>
 
 <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
 
-<body>
+<div class="container">
+
     <h1>Healthcare Assistance Program Finder</h1>
 
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/search">Search Programs</a> |
-        <a href="/programs">View Programs</a> |
-        <a href="/add-user">Add User</a> |
-        <a href="/add-application">Add Application</a> |
-        <a href="/reports">Reports</a> |
-        <a href="/about">About</a>
-    </nav>
+    <p>
+        Welcome to the Healthcare Assistance Program Finder. This web application helps users
+        explore healthcare-related financial assistance programs and submit applications through
+        a simple database-driven interface.
+    </p>
 
-    <p>Welcome to the system.</p>
+    <p>
+        Users can search for programs by benefit type and eligibility category, view available
+        programs and provider information, register as applicants, and submit applications for
+        assistance programs.
+    </p>
+
+    <h2>Main Features</h2>
+
+    <ul>
+        <li>Search healthcare assistance programs using filters</li>
+        <li>View available programs and associated organizations</li>
+        <li>Add new applicants to the system</li>
+        <li>Submit applications for selected programs</li>
+        <li>View database reports based on joined relational data</li>
+    </ul>
+
+    <p>
+        Use the navigation menu above to begin searching programs or submitting an application.
+    </p>
+
+</div>
+
 </body>
 </html>
