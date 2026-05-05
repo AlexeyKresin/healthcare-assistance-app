@@ -1,0 +1,7 @@
+Assumptions:
+1. Each organization provides at least one program.
+2. Each program is offered by exactly one organization.
+3. Each application is submitted by exactly one user.
+4. Each application is associated with exactly one program.
+5. A user may submit zero or many applications.
+6. A program may receive zero or many applications.
