@@ -1,5 +1,10 @@
 # Healthcare Assistance Program Finder
 
+
+# Public GitHub Link:
+
+https://github.com/AlexeyKresin/healthcare-assistance-app
+
 ## Live Demo
 https://web-production-01043.up.railway.app
 
